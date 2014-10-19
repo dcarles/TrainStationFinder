@@ -22,36 +22,7 @@ namespace TrainStationFinder.DemoApp
                 Path.Combine(
                     Directory.GetCurrentDirectory(),
                     "texts");
-        }
-
-        private void LoadFile(string fileName)
-        {
-            IEnumerable<WordPosition> words = GetWords(fileName);
-            foreach (var word in words)
-            {
-                string text = word.Word;
-                WordPosition wordPosition = word;
-                m_Trie.Add(text, wordPosition);
-            }
-        }
-
-
-        private IEnumerable<WordPosition> GetWords(string file)
-        {
-            String line;
-            int counter = 1;
-
-            using (StreamReader stream = new StreamReader(file))
-            {
-                while ((line = stream.ReadLine()) != null)
-                {
-                    var wordPosition = new WordPosition(counter, file, line.ToLower());
-                    yield return wordPosition;      
-                    m_WordCount++;
-                    counter++;
-                }
-            }
-        }      
+        }        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -103,5 +74,33 @@ namespace TrainStationFinder.DemoApp
             }
             progressText.Text = string.Format("{0:n0} stations read in {1} file(s). Ready.", m_WordCount, files.Length);
         }
+
+        private void LoadFile(string fileName)
+        {
+            IEnumerable<WordPosition> words = GetWords(fileName);
+            foreach (var word in words)
+            {
+                string text = word.Word;
+                WordPosition wordPosition = word;
+                m_Trie.Add(text, wordPosition);
+            }
+        }
+
+        private IEnumerable<WordPosition> GetWords(string file)
+        {
+            String line;
+            int counter = 1;
+
+            using (StreamReader stream = new StreamReader(file))
+            {
+                while ((line = stream.ReadLine()) != null)
+                {
+                    var wordPosition = new WordPosition(counter, file, line.ToLower());
+                    yield return wordPosition;
+                    m_WordCount++;
+                    counter++;
+                }
+            }
+        }      
     }
 }

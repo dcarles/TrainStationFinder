@@ -15,7 +15,7 @@ namespace TrainStationFinder.DataStructures
             m_FileName = fileName;
             m_Word = word;
             m_NextPosition = 3;
-            
+
         }
 
         public string FileName
@@ -40,14 +40,15 @@ namespace TrainStationFinder.DataStructures
         }
 
 
-        public char NextCharacter 
+        public char NextCharacter
         {
-            get { 
-                if(NextPosition < Word.Length)
-                return Word[NextPosition];
+            get
+            {
+                if (NextPosition < Word.Length)
+                    return Word[NextPosition];
                 else
                     return '\0';
-                } 
+            }
         }
 
 

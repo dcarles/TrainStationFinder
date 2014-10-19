@@ -4,7 +4,7 @@ namespace TrainStationFinder.DataStructures
 {
     /// <summary>
     /// Interface to be implemented by a data structure 
-    /// which allows adding values <see cref="TValue"/> associated with <b>string</b> keys.
+    /// which allows adding values associated with string keys.
     /// The interface allows retrieveal of multiple values 
     /// </summary>
     /// <typeparam name="TValue"></typeparam>

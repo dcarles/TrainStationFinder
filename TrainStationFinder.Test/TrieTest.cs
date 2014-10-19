@@ -13,19 +13,7 @@ namespace TrainStationFinder.Test
         {
             return new Trie<int>();
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(AggregateException))]
-        public void ExhaustiveParallelAddFails()
-        {
-            while (true)
-            {
-                ITrie<int> trie = CreateTrie();
-                LongPhrases40
-                    .AsParallel()
-                    .ForAll(phrase => trie.Add(phrase, phrase.GetHashCode()));
-            }
-        }
+      
 
         [TestMethod]
         public void TestNotExactMatched()
