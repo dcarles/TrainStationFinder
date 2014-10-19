@@ -37,16 +37,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITrie.cs" />
-    <Compile Include="_PatriciaTrie\MatchKind.cs" />
-    <Compile Include="_PatriciaTrie\PatriciaTrie.cs" />
-    <Compile Include="_PatriciaTrie\PatriciaTrieNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_PatriciaTrie\SplitResult.cs" />
-    <Compile Include="_PatriciaTrie\StringPartition.cs" />
-    <Compile Include="_Trie\Trie.cs" />
-    <Compile Include="_Trie\TrieNode.cs" />
-    <Compile Include="_PatriciaTrie\ZipResult.cs" />
-    <Compile Include="_Trie\TrieNodeBase.cs" />
+    <Compile Include="Trie.cs" />
+    <Compile Include="TrieNode.cs" />
+    <Compile Include="TrieNodeBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

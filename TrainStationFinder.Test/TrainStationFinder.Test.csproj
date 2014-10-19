@@ -40,11 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTrieTest.cs" />
-    <Compile Include="PatriciaTrieTest.cs" />
-    <Compile Include="Performance\FakeTrie.cs" />
-    <Compile Include="Performance\PerformanceCaomparisonTests.cs" />
     <Compile Include="TestCaseGeneration\SentenceBuilder.cs" />
-    <Compile Include="StringPartitionTest.cs" />
     <Compile Include="TestCaseGeneration\TestCaseGenerator.cs" />
     <Compile Include="TestCaseGeneration\NonsenseGeneration.cs" />
     <Compile Include="TrieTest.cs" />

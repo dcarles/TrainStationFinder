@@ -17,7 +17,7 @@ namespace TrainStationFinder.DemoApp
         public MainForm()
         {
             InitializeComponent();
-            m_Trie = new PatriciaTrie<WordPosition>();
+            m_Trie = new Trie<WordPosition>();
             folderName.Text =
                 Path.Combine(
                     Directory.GetCurrentDirectory(),
@@ -26,89 +26,46 @@ namespace TrainStationFinder.DemoApp
 
         private void LoadFile(string fileName)
         {
-            Tuple<WordPosition, string>[] words = GetWords(fileName).ToArray();
+            IEnumerable<WordPosition> words = GetWords(fileName);
             foreach (var word in words)
             {
-                string text = word.Item2;
-                WordPosition wordPosition = word.Item1;
+                string text = word.Word;
+                WordPosition wordPosition = word;
                 m_Trie.Add(text, wordPosition);
             }
         }
 
 
-        private IEnumerable<Tuple<WordPosition, string>> GetWords(string file)
+        private IEnumerable<WordPosition> GetWords(string file)
         {
-            using (Stream stream = File.Open(file, FileMode.Open))
+            String line;
+            int counter = 0;
+
+            using (StreamReader stream = new StreamReader(file))
             {
-                var word = new StringBuilder();
-                while (true)
+                while ((line = stream.ReadLine()) != null)
                 {
-                    long position = stream.Position;
-                    int data = (char) stream.ReadByte();
-                    {
-                        if (data > byte.MaxValue) break;
-                        var ch = (Char) data;
-                        if (char.IsLetter(ch))
-                        {
-                            word.Append(ch);
-                        }
-                        else
-                        {
-                            if (word.Length != 0)
-                            {
-                                var wordPosition = new WordPosition(position, file);
-                                yield return new Tuple<WordPosition, string>(wordPosition, word.ToString().ToLower());
-                                word.Clear();
-                                m_WordCount++;
-                            }
-                        }
-                    }
-                    UpdateProgress(position);
+                    var wordPosition = new WordPosition(counter, file, line.ToLower());
+                    yield return wordPosition;      
+                    m_WordCount++;
+                    counter++;
                 }
             }
-        }
-
-        private void UpdateProgress(long position)
-        {
-            if (position%1024 != 0) return;
-            progressBar1.Value = Math.Min((int) position/1024*2, progressBar1.Maximum);
-            Application.DoEvents();
-        }
+        }      
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             string text = textBox1.Text;
             if (string.IsNullOrEmpty(text) || text.Length < 3) return;
-            WordPosition[] result = m_Trie.Retrieve(text).ToArray();
-            listBox1.Items.Clear();
+            WordPosition[] result = m_Trie.Retrieve(text.ToLower()).ToArray();
+
             foreach (WordPosition wordPosition in result)
             {
+                wordPosition.NextPosition = text.Length;
                 listBox1.Items.Add(wordPosition);
             }
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var item = listBox1.SelectedItem as WordPosition;
-            if (item == null) return;
-            using (FileStream file = File.Open(item.FileName, FileMode.Open))
-            {
-                const int bifferSize = 200;
-                long position = Math.Max(item.CharPosition - bifferSize/2, 0);
-                file.Seek(position, SeekOrigin.Begin);
-                var buffer = new byte[bifferSize];
-                file.Read(buffer, 0, bifferSize);
-                string line = Encoding.ASCII.GetString(buffer);
-                richTextBox1.Text = line;
-
-                string serachText = textBox1.Text;
-                int index = richTextBox1.Text.IndexOf(serachText, StringComparison.InvariantCultureIgnoreCase);
-                if (index < 0) return;
-                richTextBox1.Select(index, serachText.Length);
-                richTextBox1.SelectionBackColor = Color.Yellow;
-                richTextBox1.DeselectAll();
-            }
-        }
+        }       
 
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
@@ -130,8 +87,7 @@ namespace TrainStationFinder.DemoApp
             string path = folderName.Text;
             if (!Directory.Exists(path)) return;
             string[] files = Directory.GetFiles(path, "*.txt", SearchOption.AllDirectories);
-            progressBar1.Minimum = 0;
-            progressBar1.Step = 1;
+          
             for (int index = 0; index < files.Length; index++)
             {
                 string file = files[index];
@@ -142,12 +98,10 @@ namespace TrainStationFinder.DemoApp
                         files.Length,
                         Path.GetFileName(file));
 
-                var fileInfo = new FileInfo(file);
-                progressBar1.Maximum = (int) fileInfo.Length/1024;
-                LoadFile(file);
-                progressBar1.Value = 0;
+                var fileInfo = new FileInfo(file);              
+                LoadFile(file);              
             }
-            progressText.Text = string.Format("{0:n0} words read. Ready.", m_WordCount);
+            progressText.Text = string.Format("{0:n0} stations read in {1} file(s). Ready.", m_WordCount, files.Length);
         }
     }
 }

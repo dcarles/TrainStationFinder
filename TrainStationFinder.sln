@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainStationFinder.DataStru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainStationFinder.DemoApp", "TrainStationFinder.DemoApp\TrainStationFinder.DemoApp.csproj", "{7C2CFF68-CFCD-4069-8EB4-FF136084DE1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainStationFinder.SampleConsoleApp", "TrainStationFinder.SampleConsoleApp\TrainStationFinder.SampleConsoleApp.csproj", "{AA86F904-90E5-407F-87B6-688ED8A2FF85}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainStationFinder.Test", "TrainStationFinder.Test\TrainStationFinder.Test.csproj", "{84284C14-F2EE-47E1-AD63-E001A98D5954}"
 EndProject
 Global
@@ -41,16 +39,6 @@ Global
 		{7C2CFF68-CFCD-4069-8EB4-FF136084DE1B}.Release|Mixed Platforms.Build.0 = Release|x86
 		{7C2CFF68-CFCD-4069-8EB4-FF136084DE1B}.Release|x86.ActiveCfg = Release|x86
 		{7C2CFF68-CFCD-4069-8EB4-FF136084DE1B}.Release|x86.Build.0 = Release|x86
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{AA86F904-90E5-407F-87B6-688ED8A2FF85}.Release|x86.ActiveCfg = Release|Any CPU
 		{84284C14-F2EE-47E1-AD63-E001A98D5954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84284C14-F2EE-47E1-AD63-E001A98D5954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84284C14-F2EE-47E1-AD63-E001A98D5954}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
