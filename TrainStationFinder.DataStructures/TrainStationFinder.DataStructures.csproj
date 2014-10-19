@@ -41,6 +41,7 @@
     <Compile Include="Trie.cs" />
     <Compile Include="TrieNode.cs" />
     <Compile Include="TrieNodeBase.cs" />
+    <Compile Include="WordPosition.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

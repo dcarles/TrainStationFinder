@@ -1,17 +1,17 @@
 ﻿using System.IO;
 
-namespace TrainStationFinder.DemoApp
+namespace TrainStationFinder.DataStructures
 {
-    internal class WordPosition
+    public class WordPosition
     {
-        private readonly long m_CharPosition;
+        private readonly long m_Line;
         private readonly string m_FileName;
         private readonly string m_Word;
         private int m_NextPosition;
 
-        public WordPosition(long charPosition, string fileName, string word)
+        public WordPosition(long line, string fileName, string word)
         {
-            m_CharPosition = charPosition;
+            m_Line = line;
             m_FileName = fileName;
             m_Word = word;
             m_NextPosition = 3;
@@ -23,9 +23,9 @@ namespace TrainStationFinder.DemoApp
             get { return m_FileName; }
         }
 
-        public long CharPosition
+        public long Line
         {
-            get { return m_CharPosition; }
+            get { return m_Line; }
         }
 
         public string Word
@@ -56,10 +56,10 @@ namespace TrainStationFinder.DemoApp
         {
             return
                 string.Format(
-                    "Station: {0}, next character '{1}' (Pos {2} in file {3})",
+                    "Station: {0}, next character '{1}' (Line {2} in file {3})",
                     Word,
                     NextCharacter,
-                    CharPosition,
+                    Line,
                     Path.GetFileName(FileName));
         }
     }

@@ -39,7 +39,7 @@ namespace TrainStationFinder.DemoApp
         private IEnumerable<WordPosition> GetWords(string file)
         {
             String line;
-            int counter = 0;
+            int counter = 1;
 
             using (StreamReader stream = new StreamReader(file))
             {
