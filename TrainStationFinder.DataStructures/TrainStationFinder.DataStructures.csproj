@@ -42,6 +42,12 @@
     <Compile Include="TrieNode.cs" />
     <Compile Include="TrieNodeBase.cs" />
     <Compile Include="WordPosition.cs" />
+    <Compile Include="_PatriciaTrie\MatchKind.cs" />
+    <Compile Include="_PatriciaTrie\PatriciaTrie.cs" />
+    <Compile Include="_PatriciaTrie\PatriciaTrieNode.cs" />
+    <Compile Include="_PatriciaTrie\SplitResult.cs" />
+    <Compile Include="_PatriciaTrie\StringPartition.cs" />
+    <Compile Include="_PatriciaTrie\ZipResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
